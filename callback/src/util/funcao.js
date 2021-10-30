@@ -1,14 +1,23 @@
 import {mask, unMask} from 'remask';
 
-export const mascara = (cpf) => {
+export const mascara = (document, name) => {
 
-    const cleanMask = unMask(cpf);
-    const getMask = mask(cleanMask, ['999.999.999-99','99.999.999/9999-99']);
+    let cleanMask = unMask(document);
+    let getMask = '';
+
+    if(name === 'documento'){
+        getMask = mask(cleanMask, ['999.999.999-99','99.999.999/9999-99']);
+    }
+    else if(name === 'cep'){
+        getMask = mask(cleanMask, ['99999-990']);
+    }
+    //const getMask = mask(cleanMask, ['999.999.999-99','99.999.999/9999-99']);
 
     return getMask;
 }
 
-export const viacep = (cep, callback) => {
+export const validarEmail = (email) => {
 
-    return   {'Nome':'Lincon','numero':'307',}
+    var res = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;
+    return res.test(email);
 }
