@@ -83,7 +83,7 @@ function App() {
     if(name === 'email'){
 
       const status = validarEmail(value);
-      debugger
+      
       if(status){
         setErrorMessage('');
       }
@@ -94,10 +94,17 @@ function App() {
     }
     else if(name === 'cep'){
       
-      ViaCep(value.replace('-',''),setAddress);
+      //ViaCep(value.replace('-',''),setAddress);
+      ViaCep(value.replace('-',''), UpdateFormData);
       
     }
 
+  }
+
+  const UpdateFormData = (AddressData: any) =>{
+
+    setFormData(AddressData);
+    setAddress(AddressData);
   }
 
   return (
@@ -117,7 +124,7 @@ function App() {
         <input type="text" name="cep"  placeholder="Digite o cep" onChange={handleChange} onBlur={onBlur} value={cepValue}/>
         <p>{errorMessage ? errorMessage : ''}</p>
         <br /><br />
-        <input type="text" name="logradouro"  placeholder="Digite o logradouro" onChange={handleChange} defaultValue={address && address.logradouro}/>
+        <input type="text" name="logradouro" id="rua" placeholder="Digite o logradouro" onChange={handleChange} defaultValue={address && address.logradouro}/>
         <p>{errorMessage ? errorMessage : ''}</p>
         <br /><br />
         <input type="text" name="bairro"  placeholder="Digite o bairro" onChange={handleChange} defaultValue={address && address.bairro}/>
