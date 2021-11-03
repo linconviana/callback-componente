@@ -12,6 +12,7 @@ type FormData = {
   bairro: string,
   localidade: string,
   uf: string,
+  ddd: string
 }
 
 const AddressData = {
@@ -103,8 +104,12 @@ function App() {
 
   const UpdateFormData = (AddressData: any) =>{
 
-    setFormData(AddressData);
     setAddress(AddressData);
+    formData.logradouro = AddressData.logradouro;
+    formData.bairro = AddressData.bairro;
+    formData.localidade = AddressData.localidade;
+    formData.uf = AddressData.uf;
+    formData.ddd = AddressData.ddd;
   }
 
   return (
