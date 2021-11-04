@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import { mascara, validarEmail } from './util/funcao';
+import Globais from './util/globais';
 import { ViaCep } from './util/requestApi';
 
 type FormData = {
@@ -42,9 +43,35 @@ function App() {
 
     event.preventDefault();
 
+    alert(Globais.CPF);
+
+    Globais.CPF = '123.123.456-99';
+
+    alert(Globais.CPF);
+
+    Globais.CPF = '';
+
+    alert(Globais.CPF);
+
+    formData.logradouro = Globais.ViaCepDados.logradouro;
+    formData.bairro = Globais.ViaCepDados.bairro;
+    formData.localidade = Globais.ViaCepDados.localidade;
+    formData.uf = Globais.ViaCepDados.uf;
+    formData.ddd = Globais.ViaCepDados.ddd;
+
     const data = JSON.stringify(formData);
 
     debugger
+    alert(Globais.ViaCepDados.logradouro )
+
+    Globais.ViaCepDados.logradouro = "";
+    Globais.ViaCepDados.bairro = "";
+    Globais.ViaCepDados.localidade = "";
+    Globais.ViaCepDados.uf = "";
+    Globais.ViaCepDados.ddd = "";
+
+    alert(Globais.ViaCepDados.logradouro )
+
 
   }
 
